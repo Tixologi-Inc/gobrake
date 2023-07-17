@@ -157,7 +157,7 @@ func NewNotice(e interface{}, ctx *gin.Context, depth int) *Notice {
 		notice.Context["component"] = packageName
 	}
 
-	if ctx.Request != nil {
+	if ctx != nil && ctx.Request != nil {
 		notice.SetRequest(ctx)
 	}
 

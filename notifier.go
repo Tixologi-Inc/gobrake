@@ -13,6 +13,8 @@ import (
 	"sync"
 	"sync/atomic"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 const (
@@ -217,7 +219,7 @@ func (n *Notifier) AddFilter(fn func(*Notice) *Notice) {
 }
 
 // Notify notifies Airbrake about the error.
-func (n *Notifier) Notify(e interface{}, req *http.Request) {
+func (n *Notifier) Notify(e interface{}, ctx *gin.Context) {
 	if n.opt.DisableErrorNotifications {
 		logger.Printf(
 			"error notifications are disabled, will not deliver notice=%q",
@@ -226,14 +228,14 @@ func (n *Notifier) Notify(e interface{}, req *http.Request) {
 		return
 	}
 
-	notice := n.Notice(e, req, 1)
+	notice := n.Notice(e, ctx, 1)
 	n.SendNoticeAsync(notice)
 }
 
 // Notice returns Aibrake notice created from error and request. depth
 // determines which call frame to use when constructing backtrace.
-func (n *Notifier) Notice(err interface{}, req *http.Request, depth int) *Notice {
-	return NewNotice(err, req, depth+1)
+func (n *Notifier) Notice(err interface{}, ctx *gin.Context, depth int) *Notice {
+	return NewNotice(err, ctx, depth+1)
 }
 
 type sendResponse struct {

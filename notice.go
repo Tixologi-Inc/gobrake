@@ -1,6 +1,7 @@
 package gobrake
 
 import (
+	"encoding/json"
 	"fmt"
 	"go/build"
 	"net/http"
@@ -9,6 +10,7 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/gin-gonic/gin"
 	"github.com/pkg/errors"
 )
 
@@ -84,7 +86,8 @@ func (n *Notice) String() string {
 	return fmt.Sprintf("Notice<%s: %s>", e.Type, e.Message)
 }
 
-func (n *Notice) SetRequest(req *http.Request) {
+func (n *Notice) SetRequest(ctx *gin.Context) {
+	req := ctx.Request
 	n.Context["url"] = req.URL.String()
 	n.Context["httpMethod"] = req.Method
 	if ua := req.Header.Get("User-Agent"); ua != "" {
@@ -97,6 +100,17 @@ func (n *Notice) SetRequest(req *http.Request) {
 			n.Env[k] = v[0]
 		} else {
 			n.Env[k] = v
+		}
+	}
+
+	if req.Method == http.MethodPost || req.Method == http.MethodPut || req.Method == http.MethodPatch {
+		bodyString := ctx.GetString("BodyString")
+
+		var body interface{}
+		if err := json.Unmarshal([]byte(bodyString), &body); err != nil {
+			n.Context["body"] = "error parsing body: " + err.Error()
+		} else {
+			n.Context["body"] = body
 		}
 	}
 }
@@ -115,7 +129,7 @@ func remoteAddr(req *http.Request) string {
 	return parts[0]
 }
 
-func NewNotice(e interface{}, req *http.Request, depth int) *Notice {
+func NewNotice(e interface{}, ctx *gin.Context, depth int) *Notice {
 	notice, ok := e.(*Notice)
 	if ok {
 		return notice
@@ -143,8 +157,8 @@ func NewNotice(e interface{}, req *http.Request, depth int) *Notice {
 		notice.Context["component"] = packageName
 	}
 
-	if req != nil {
-		notice.SetRequest(req)
+	if ctx.Request != nil {
+		notice.SetRequest(ctx)
 	}
 
 	return notice

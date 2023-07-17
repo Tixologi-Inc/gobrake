@@ -17,6 +17,7 @@ import (
 	"runtime"
 	"testing"
 
+	"github.com/gin-gonic/gin"
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
@@ -43,8 +44,8 @@ var _ = Describe("Notifier", func() {
 	var sentNotice *gobrake.Notice
 	var sendNoticeReq *http.Request
 
-	notify := func(e interface{}, req *http.Request) {
-		notifier.Notify(e, req)
+	notify := func(e interface{}, ctx *gin.Context) {
+		notifier.Notify(e, ctx)
 		notifier.Flush()
 	}
 
@@ -326,7 +327,11 @@ var _ = Describe("Notifier", func() {
 			},
 		}
 
-		notify("hello", req)
+		ginCtx := &gin.Context{
+			Request: req,
+		}
+
+		notify("hello", ginCtx)
 
 		ctx := sentNotice.Context
 		Expect(ctx["url"]).To(Equal("http://foo/bar"))

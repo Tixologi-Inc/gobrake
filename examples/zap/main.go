@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/airbrake/gobrake/v5"
-	zapbrake "github.com/airbrake/gobrake/v5/zap"
+	"github.com/Tixologi-Inc/gobrake"
+	zapbrake "github.com/Tixologi-Inc/gobrake/zap"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )

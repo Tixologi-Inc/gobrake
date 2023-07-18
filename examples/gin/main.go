@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/airbrake/gobrake/v5"
-	ginbrake "github.com/airbrake/gobrake/v5/gin"
+	"github.com/Tixologi-Inc/gobrake"
+	ginbrake "github.com/Tixologi-Inc/gobrake/gin"
 	"github.com/gin-gonic/gin"
 )
 

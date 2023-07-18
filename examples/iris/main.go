@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/airbrake/gobrake/v5"
-	irisbrake "github.com/airbrake/gobrake/v5/iris"
+	"github.com/Tixologi-Inc/gobrake"
+	irisbrake "github.com/Tixologi-Inc/gobrake/iris"
 	"github.com/kataras/iris/v12"
 )
 

@@ -4,7 +4,7 @@ import (
 	goctx "context"
 	"log"
 
-	"github.com/airbrake/gobrake/v5"
+	"github.com/Tixologi-Inc/gobrake"
 
 	"github.com/beego/beego/v2/server/web"
 	"github.com/beego/beego/v2/server/web/context"

@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/airbrake/gobrake/v5"
-	buffalobrake "github.com/airbrake/gobrake/v5/buffalo"
+	"github.com/Tixologi-Inc/gobrake"
+	buffalobrake "github.com/Tixologi-Inc/gobrake/buffalo"
 	"github.com/gobuffalo/buffalo"
 	"github.com/gobuffalo/buffalo/render"
 )

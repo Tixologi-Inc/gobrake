@@ -3,7 +3,7 @@ package gobrake_test
 import (
 	"errors"
 
-	"github.com/airbrake/gobrake/v5"
+	"github.com/Tixologi-Inc/gobrake"
 
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"

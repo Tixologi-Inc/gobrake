@@ -3,7 +3,7 @@ package fasthttp
 import (
 	"context"
 
-	"github.com/airbrake/gobrake/v5"
+	"github.com/Tixologi-Inc/gobrake"
 	"github.com/valyala/fasthttp"
 )
 

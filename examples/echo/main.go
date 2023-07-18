@@ -9,9 +9,9 @@ import (
 	"strings"
 	"time"
 
-	echobrake "github.com/airbrake/gobrake/v5/echo"
+	echobrake "github.com/Tixologi-Inc/gobrake/echo"
 
-	"github.com/airbrake/gobrake/v5"
+	"github.com/Tixologi-Inc/gobrake"
 	"github.com/labstack/echo/v4"
 )
 

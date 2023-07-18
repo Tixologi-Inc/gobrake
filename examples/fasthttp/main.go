@@ -11,8 +11,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/airbrake/gobrake/v5"
-	fasthttpbrake "github.com/airbrake/gobrake/v5/fasthttp"
+	"github.com/Tixologi-Inc/gobrake"
+	fasthttpbrake "github.com/Tixologi-Inc/gobrake/fasthttp"
 	"github.com/valyala/fasthttp"
 )
 

@@ -5,8 +5,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/airbrake/gobrake/v5"
-	ng "github.com/airbrake/gobrake/v5/negroni"
+	"github.com/Tixologi-Inc/gobrake"
+	ng "github.com/Tixologi-Inc/gobrake/negroni"
 
 	"github.com/gorilla/mux"
 	"github.com/urfave/negroni"

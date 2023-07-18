@@ -3,7 +3,7 @@ package zap
 import (
 	"errors"
 
-	"github.com/airbrake/gobrake/v5"
+	"github.com/Tixologi-Inc/gobrake"
 	"go.uber.org/zap/zapcore"
 )
 

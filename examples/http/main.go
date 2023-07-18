@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/airbrake/gobrake/v5"
-	httpbrake "github.com/airbrake/gobrake/v5/http"
+	"github.com/Tixologi-Inc/gobrake"
+	httpbrake "github.com/Tixologi-Inc/gobrake/http"
 )
 
 // Define models

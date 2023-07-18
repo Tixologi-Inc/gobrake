@@ -4,8 +4,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/airbrake/gobrake/v5"
-	"github.com/airbrake/gobrake/v5/apexlog"
+	"github.com/Tixologi-Inc/gobrake"
+	"github.com/Tixologi-Inc/gobrake/apexlog"
 	"github.com/apex/log"
 )
 

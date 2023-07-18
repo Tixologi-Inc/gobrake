@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/airbrake/gobrake/v5"
-	fiberbrake "github.com/airbrake/gobrake/v5/fiber"
+	"github.com/Tixologi-Inc/gobrake"
+	fiberbrake "github.com/Tixologi-Inc/gobrake/fiber"
 	"github.com/gofiber/fiber/v2"
 )
 

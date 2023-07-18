@@ -6,8 +6,8 @@ import (
 	"io"
 	"os"
 
-	"github.com/airbrake/gobrake/v5"
-	zerobrake "github.com/airbrake/gobrake/v5/zerolog" // Named import so that we don't conflict with rs/zerolog
+	"github.com/Tixologi-Inc/gobrake"
+	zerobrake "github.com/Tixologi-Inc/gobrake/zerolog" // Named import so that we don't conflict with rs/zerolog
 	"github.com/rs/zerolog"
 )
 

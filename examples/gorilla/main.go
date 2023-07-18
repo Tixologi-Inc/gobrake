@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/airbrake/gobrake/v5"
-	gorillabrake "github.com/airbrake/gobrake/v5/gorilla"
+	"github.com/Tixologi-Inc/gobrake"
+	gorillabrake "github.com/Tixologi-Inc/gobrake/gorilla"
 	"github.com/gorilla/mux"
 )
 

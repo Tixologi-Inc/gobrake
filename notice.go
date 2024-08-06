@@ -11,6 +11,7 @@ import (
 	"sync"
 
 	"github.com/gin-gonic/gin"
+	"github.com/golang-jwt/jwt/v5"
 	"github.com/pkg/errors"
 )
 
@@ -103,6 +104,11 @@ func (n *Notice) SetRequest(ctx *gin.Context) {
 		}
 	}
 
+	setBody(req, n, ctx)
+	setUser(req, n)
+}
+
+func setBody(req *http.Request, n *Notice, ctx *gin.Context) {
 	if req.Method == http.MethodPost || req.Method == http.MethodPut || req.Method == http.MethodPatch {
 		bodyString := ctx.GetString("BodyString")
 
@@ -111,6 +117,19 @@ func (n *Notice) SetRequest(ctx *gin.Context) {
 			n.Context["body"] = "error parsing body: " + err.Error()
 		} else {
 			n.Context["body"] = body
+		}
+	}
+}
+
+func setUser(req *http.Request, n *Notice) {
+	if authHeader := req.Header.Get("Authorization"); authHeader != "" && strings.HasPrefix(authHeader, "Bearer ") {
+		jwtToken := strings.TrimPrefix(authHeader, "Bearer ")
+		claims := jwt.MapClaims{}
+		token, _, err := jwt.NewParser().ParseUnverified(jwtToken, claims)
+		if err != nil {
+			n.Context["user"] = "error parsing jwt: " + err.Error()
+		} else {
+			n.Context["user"] = token.Claims
 		}
 	}
 }
